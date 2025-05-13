@@ -37,4 +37,5 @@ flutter:
   
   assets:
     - assets/books/
+    - assets/data/
 
