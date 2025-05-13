@@ -1,0 +1,6 @@
+books:
+  - title: "龙族 1 - 火之晨曦"
+    author: "River South"
+    #cover_asset_path: "assets/covers/book_one.jpg"
+    content_asset_path: "assets/books/readme.txt"
+    reading_percentage: 0.50
