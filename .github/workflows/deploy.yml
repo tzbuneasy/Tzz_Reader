@@ -1,43 +1,36 @@
+# .github/workflows/deploy.yml
+
 name: Deploy Flutter Web to GitHub Pages
 
-# 控制工作流程何时运行
 on:
-  push: # 当推送到指定分支时触发
+  push:
     branches:
-      - main # 或者你的主开发分支，例如 master
+      - main # 或者你的主开发分支
 
 jobs:
   build_and_deploy:
-    runs-on: ubuntu-latest # 使用最新的 Ubuntu 运行器
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 授予 GITHUB_TOKEN 写入仓库内容的权限
 
     steps:
-      # 步骤 1: 检出你的代码
       - name: Checkout code
-        uses: actions/checkout@v4 # 使用官方的 checkout action
+        uses: actions/checkout@v4
 
-      # 步骤 2: 设置 Flutter 环境
-      # 你可以使用现有的 Flutter action，例如 'subosito/flutter-action'
-      # 或者自己安装 Flutter SDK
       - name: Setup Flutter
-        uses: subosito/flutter-action@v2 # 推荐使用这个 action
+        uses: subosito/flutter-action@v2
         with:
-          channel: 'stable' # 或者 'beta', 'dev'
-          # flutter-version: '3.x.x' # 可选：指定特定的 Flutter 版本
+          channel: 'stable'
 
-      # 步骤 3: 获取 Flutter 依赖
       - name: Get Flutter dependencies
         run: flutter pub get
 
-      # 步骤 4: 构建 Web 应用
-      # !! 重要：确保这里的 <你的仓库名> 与你本地构建时使用的名称一致 !!
-      # 如果你的仓库名包含特殊字符，可能需要用引号包裹
       - name: Build Flutter web app
-        run: flutter build web --release --base-href /Tzz_Reader/
+        # 确保这里的 <你的仓库名> 是正确的
+        run: flutter build web --release --base-href /Tzz_Reader/ # 假设 Tzz_Reader 是你的仓库名
 
-      # 步骤 5: 部署到 GitHub Pages
-      # 使用 'peaceiris/actions-gh-pages' action 来部署
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # GitHub 自动提供的 token
-          publish_dir: ./build/web # 指定要发布的目录 (Flutter web 构建输出目录)
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
