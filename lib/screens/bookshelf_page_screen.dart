@@ -26,7 +26,7 @@ class _BookshelfPageState extends State<BookshelfPage> {
   Future<List<BookInfo>> _loadBookshelfData() async {
 
     try{
-      final String yamlString = await rootBundle.loadString('data/bookshelf.yaml'); //加载字符串
+      final String yamlString = await rootBundle.loadString('resource/data/bookshelf.yaml'); //加载字符串
       final dynamic yamlData = loadYaml(yamlString); //解析字符串
 
       //转化为相关对象列表
