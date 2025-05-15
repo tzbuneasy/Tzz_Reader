@@ -34719,7 +34719,7 @@ rL(){var s=0,r=A.R(t.Co),q,p=2,o=[],n,m,l,k,j,i,h,g
 var $async$rL=A.S(function(a,b){if(a===1){o.push(b)
 s=p}while(true)switch(s){case 0:p=4
 s=7
-return A.V($.rk().Ny("data/bookshelf.yaml"),$async$rL)
+return A.V($.rk().Ny("resource/data/bookshelf.yaml"),$async$rL)
 case 7:n=b
 m=A.azV(n,null,!1,null).a.gt()
 if(m!=null&&J.io(m,"books") instanceof A.q0){j=t.Q4.a(J.io(m,"books"))
